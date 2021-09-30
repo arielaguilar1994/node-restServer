@@ -5,4 +5,10 @@
  - mongoose
  - bcryptjs
  - express-validator
+
+ # Connection String
+ - Configurada en heroku cli
+ - Ver variables ```heroku config```
+ - Set variable ```heroku config:set NombreVariable="ValorVariable"```
+ - Video 133 Curso Node Udemy
   
