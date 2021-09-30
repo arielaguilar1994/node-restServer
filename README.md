@@ -12,3 +12,5 @@
  - Set variable ```heroku config:set NombreVariable="ValorVariable"```
  - Video 133 Curso Node Udemy
   
+  # Deploy en master
+  - CMD ```git push heroku master```
