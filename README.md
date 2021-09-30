@@ -2,4 +2,7 @@
  - express
  - dotenv
  - cors
+ - mongoose
+ - bcryptjs
+ - express-validator
   
