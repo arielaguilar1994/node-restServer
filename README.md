@@ -14,3 +14,7 @@
   
   # Deploy en master
   - CMD ```git push heroku master```
+
+  # View logs
+  - CMD ```heroku logs -n "Cantidad de logs a ver"```
+  - CMD ```heroku logs -n "Cantidad de logs a ver" --tail``` logs en tiempo real
