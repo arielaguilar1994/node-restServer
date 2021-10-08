@@ -67,7 +67,7 @@ const deleteUser = async(req = request, res = response) => {
     // const user = await Usuario.findByIdAndDelete(id);
     
     // Logic delete
-    const user = await Usuario.findByIdAndUpdate(id, { state:false });
+    const user = await Usuario.findByIdAndUpdate(id, { state: false });
 
     res.json({
         msg: 'delete API - controlador',

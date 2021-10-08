@@ -8,6 +8,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.userPath = '/api/user';
+        this.authPath = '/api/auth';
 
         // Conecting DB
         this.connectDb();
@@ -36,6 +37,7 @@ class Server {
 
     routes() {
         // Conditional Middleware
+        this.app.use( this.authPath, require('../routes/auth.router') );
         this.app.use( this.userPath, require('../routes/user') );
     }
 

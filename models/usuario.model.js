@@ -37,7 +37,8 @@ const { Schema, model } = require('mongoose');
  // retorna el objeto manipulado como lo estamos haciendo
  userSchema.methods.toJSON = function (){
     // de esta forma sacamos la __v y pass y con el operador obtenemos el resto de propiedades
-    const { __v, password, ...user } = this.toObject();
+    const { __v, password,  _id, ...user } = this.toObject();
+    user.uid = _id;
     return user;
  };
 
