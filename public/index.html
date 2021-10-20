@@ -33,8 +33,7 @@
             // Google Token
             // console.log(response.credential);
 
-            const body = { id_token: response.credential }
-            console.log(window.location);
+            const body = { id_token: response.credential };
 
             fetch(`${window.location}api/auth/google`, {
                 method: 'POST',
@@ -45,7 +44,6 @@
             })
             .then( resp => resp.json() )
             .then( resp =>  {
-                console.log(resp);
                 localStorage.setItem( 'email', resp.user.email );
             })
             .catch( console.warn );
@@ -53,7 +51,6 @@
 
         const button = document.getElementById('google_singout');
         button.onclick = async() => {
-            console.log(google.accounts.id);
             google.accounts.id.disableAutoSelect();
 
             google.accounts.id.revoke( localStorage.getItem( 'email' ), done => {
