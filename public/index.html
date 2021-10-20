@@ -34,8 +34,9 @@
             // console.log(response.credential);
 
             const body = { id_token: response.credential }
+            console.log(window.location);
 
-            fetch('http://localhost:8080/api/auth/google', {
+            fetch(`${window.location}api/auth/google`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
