@@ -33,7 +33,7 @@ const putUser = async(req = request, res = response) => {
         remainder.password = bcryptjs.hashSync(password, salt);
     }
 
-    const user = await Usuario.findByIdAndUpdate(id, remainder);
+    const user = await Usuario.findByIdAndUpdate(id, remainder, { new: true });
 
     res.status(200).json({
         msg: 'put API - controlador',

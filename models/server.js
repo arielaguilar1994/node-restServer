@@ -7,8 +7,11 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        this.userPath = '/api/user';
         this.authPath = '/api/auth';
+        this.categoryPath = '/api/category';
+        this.productPath = '/api/product';
+        this.search = '/api/search';
+        this.userPath = '/api/user';
 
         // Conecting DB
         this.connectDb();
@@ -39,6 +42,9 @@ class Server {
         // Conditional Middleware
         this.app.use( this.authPath, require('../routes/auth.router') );
         this.app.use( this.userPath, require('../routes/user') );
+        this.app.use( this.productPath, require('../routes/products.router') );
+        this.app.use( this.search, require('../routes/search.router') );
+        this.app.use( this.categoryPath, require('../routes/categories.router') );
     }
 
     listen() {

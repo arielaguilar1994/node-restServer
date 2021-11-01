@@ -18,3 +18,6 @@
   # View logs
   - CMD ```heroku logs -n "Cantidad de logs a ver"```
   - CMD ```heroku logs -n "Cantidad de logs a ver" --tail``` logs en tiempo real
+
+  # Generate Documentation
+  - Generar la documentacion de la api a travez de postman en el video 161 
