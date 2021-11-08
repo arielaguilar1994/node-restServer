@@ -5,6 +5,9 @@
  - mongoose
  - bcryptjs
  - express-validator
+ - express-fileupload
+ - UUID
+ - cloudinary - [Cloudinary](https://cloudinary.com/)
 
  # Connection String
  - Configurada en heroku cli

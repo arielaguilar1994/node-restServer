@@ -76,6 +76,21 @@ const existProductByName = async(name = '') => {
     }
 }
 
+/**
+ * Validate allowed collection
+ * @param {*} collection 
+ * @param {*} array 
+ */
+const collectionValid = (collection = '', array = []) => {
+    const exist = array.includes(collection);
+
+    if(!exist){
+        throw new Error(`The collection ${ collection } is invalid. Allowed collection ${array}`);
+    }
+
+    return true;
+}
+
 module.exports = {
     isRoleValid,
     existEmail,
@@ -84,4 +99,5 @@ module.exports = {
     existCategoryByName,
     existProductById,
     existProductByName,
+    collectionValid
 }

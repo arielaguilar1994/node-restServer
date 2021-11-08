@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
+
+
 const { dbConnection } = require('../DB/config.db');
 
 class Server {
@@ -7,11 +10,14 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        this.authPath = '/api/auth';
-        this.categoryPath = '/api/category';
-        this.productPath = '/api/product';
-        this.search = '/api/search';
-        this.userPath = '/api/user';
+        this.path = {
+            authPath: '/api/auth',
+            categoryPath: '/api/category',
+            productPath: '/api/product',
+            search: '/api/search',
+            userPath: '/api/user',
+            uploadFiles: '/api/uploads'
+        };
 
         // Conecting DB
         this.connectDb();
@@ -21,6 +27,7 @@ class Server {
 
         // Rutas de mi app
         this.routes();
+        
     }
 
     async connectDb(){
@@ -36,15 +43,23 @@ class Server {
 
         // Public directori
         this.app.use( express.static('public') );
+
+        // fileUpload - Carga de Archivos
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/',
+            createParentPath : true // create folder if is not exist
+        }));
     }
 
     routes() {
         // Conditional Middleware
-        this.app.use( this.authPath, require('../routes/auth.router') );
-        this.app.use( this.userPath, require('../routes/user') );
-        this.app.use( this.productPath, require('../routes/products.router') );
-        this.app.use( this.search, require('../routes/search.router') );
-        this.app.use( this.categoryPath, require('../routes/categories.router') );
+        this.app.use( this.path.authPath, require('../routes/auth.router') );
+        this.app.use( this.path.userPath, require('../routes/user') );
+        this.app.use( this.path.productPath, require('../routes/products.router') );
+        this.app.use( this.path.search, require('../routes/search.router') );
+        this.app.use( this.path.categoryPath, require('../routes/categories.router') );
+        this.app.use( this.path.uploadFiles, require('../routes/upload.router') );
     }
 
     listen() {
